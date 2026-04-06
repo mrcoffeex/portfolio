@@ -7,14 +7,14 @@ import { Github, ArrowUpRight } from 'lucide-react'
 const projects = [
   {
     id: 1,
-    title: 'PBO DTS',
+    title: 'DokHUb',
     description:
-      'The official document transmission platform for the Davao Del Sur Provincial Budget Office — secure, tracked, and transparent.',
-    tags: ['PHP', 'MySQL', 'Bootstrap', 'JavaScript'],
+      'DokHUb is a Full Stack Laravel StartUp project designed to streamline doctor appointment scheduling and management. It features a user-friendly interface for patients and doctors, real-time notifications, AI features, and secure data handling.',
+    tags: ['LARAVEL', 'VUE', 'TAILWIND CSS', 'INERTIA JS', 'POSTGRESQL'],
     github: 'https://github.com/mrcoffeex',
-    live: 'https://dts.pbodavaodelsur.com/',
-    gradient: 'from-indigo-500/15 to-blue-500/15',
-    dotColor: 'bg-indigo-500',
+    live: 'https://dokhub-main-k63oyd.free.laravel.cloud/',
+    gradient: 'from-blue-500/15 to-cyan-500/15',
+    dotColor: 'bg-blue-500',
   },
   {
     id: 2,
@@ -37,6 +37,17 @@ const projects = [
     live: '#',
     gradient: 'from-blue-500/15 to-cyan-500/15',
     dotColor: 'bg-blue-500',
+  },
+  {
+    id: 4,
+    title: 'PBO DTS',
+    description:
+      'The official document transmission platform for the Davao Del Sur Provincial Budget Office — secure, tracked, and transparent.',
+    tags: ['PHP', 'MySQL', 'Bootstrap', 'JavaScript'],
+    github: 'https://github.com/mrcoffeex',
+    live: 'https://dts.pbodavaodelsur.com/',
+    gradient: 'from-indigo-500/15 to-blue-500/15',
+    dotColor: 'bg-indigo-500',
   },
 ]
 

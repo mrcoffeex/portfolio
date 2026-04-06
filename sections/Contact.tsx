@@ -8,8 +8,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'gocotano.kentjohn@example.com',
-    href: 'mailto:gocotano.kentjohn@example.com',
+    value: 'gocotano.kentjohn@gmail.com',
+    href: 'mailto:gocotano.kentjohn@gmail.com',
   },
   {
     icon: MapPin,
@@ -49,14 +49,36 @@ export default function Contact() {
   })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    // Simulate form submission — replace with your API call
-    await new Promise((res) => setTimeout(res, 1000))
-    setLoading(false)
-    setSubmitted(true)
+    setError(null)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formState),
+      })
+
+      const data = await res.json().catch(() => ({}))
+
+      if (!res.ok) {
+        const errMsg = data?.error || 'Failed to send message'
+        const details = data?.details
+        setError(details ? `${errMsg} — ${details}` : errMsg)
+        return
+      }
+
+      setSubmitted(true)
+      setFormState({ name: '', email: '', subject: '', message: '' })
+    } catch (err: any) {
+      console.error(err)
+      setError(err?.message || 'Something went wrong. Please try again later.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   const inputBase =
@@ -180,6 +202,11 @@ export default function Contact() {
                 onSubmit={handleSubmit}
                 className="p-7 rounded-2xl border border-border bg-card space-y-5"
               >
+                {error && (
+                  <div className="text-sm text-red-500 bg-red-50 p-3 rounded">
+                    {error}
+                  </div>
+                )}
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label
@@ -199,6 +226,7 @@ export default function Contact() {
                       }
                       placeholder="Your name"
                       className={inputBase}
+                      disabled={loading}
                     />
                   </div>
                   <div>
@@ -219,6 +247,7 @@ export default function Contact() {
                       }
                       placeholder="you@example.com"
                       className={inputBase}
+                      disabled={loading}
                     />
                   </div>
                 </div>
@@ -259,6 +288,7 @@ export default function Contact() {
                     }
                     placeholder="Tell me about your project, timeline, and budget..."
                     className={`${inputBase} resize-none`}
+                    disabled={loading}
                   />
                 </div>
 
