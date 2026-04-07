@@ -2,6 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import GitHubContributions from '@/components/GitHubContributions'
 
 const techStack = [
   {
@@ -85,6 +86,19 @@ export default function Stack() {
             </motion.div>
           ))}
         </div>
+
+        {/* GitHub Activity */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="mt-6 p-6 rounded-xl border border-border bg-card"
+        >
+          <h3 className="text-xs font-mono text-indigo-400 uppercase tracking-wider mb-5">
+            GitHub Activity
+          </h3>
+          <GitHubContributions />
+        </motion.div>
       </div>
     </section>
   )
