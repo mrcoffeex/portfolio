@@ -19,7 +19,7 @@ const techStack = [
   },
   {
     category: 'DevOps & Tools',
-    items: ['Git', 'GitHub', 'Docker', 'Vercel', 'Linux / CLI', 'VS Code'],
+    items: ['Git', 'GitHub', 'Docker', 'Vercel', 'Linux / CLI', 'VS Code', 'GitHub Copilot', 'Claude Code', 'Cursor AI'],
   },
 ]
 
