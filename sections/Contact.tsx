@@ -82,7 +82,7 @@ export default function Contact() {
   }
 
   const inputBase =
-    'w-full px-4 py-2.5 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-indigo-500/60 focus:ring-2 focus:ring-indigo-500/15 transition-all text-sm'
+    'w-full px-4 py-2.5 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-orange-500/60 focus:ring-2 focus:ring-orange-500/15 transition-all text-sm'
 
   return (
     <section id="contact" ref={ref} className="py-24 sm:py-32">
@@ -120,10 +120,10 @@ export default function Contact() {
               {contactInfo.map(({ icon: Icon, label, value, href }) => (
                 <div
                   key={label}
-                  className="flex items-center gap-4 p-4 rounded-xl border border-border bg-card hover:border-indigo-500/30 transition-colors"
+                  className="flex items-center gap-4 p-4 rounded-xl border border-border bg-card hover:border-orange-500/30 transition-colors"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-indigo-500/10 flex items-center justify-center flex-shrink-0">
-                    <Icon size={18} className="text-indigo-400" />
+                  <div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0">
+                    <Icon size={18} className="text-orange-400" />
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground mb-0.5">
@@ -132,7 +132,7 @@ export default function Contact() {
                     {href ? (
                       <a
                         href={href}
-                        className="text-sm font-medium text-foreground hover:text-indigo-400 transition-colors"
+                        className="text-sm font-medium text-foreground hover:text-orange-400 transition-colors"
                       >
                         {value}
                       </a>
@@ -157,12 +157,12 @@ export default function Contact() {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 px-4 py-3 rounded-xl border border-border bg-card text-sm text-muted-foreground hover:text-foreground hover:border-indigo-500/40 hover:bg-muted transition-all group"
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl border border-border bg-card text-sm text-muted-foreground hover:text-foreground hover:border-orange-500/40 hover:bg-muted transition-all group"
                   >
-                    <Icon
-                      size={16}
-                      className="group-hover:text-indigo-400 transition-colors"
-                    />
+                      <Icon
+                        size={16}
+                        className="group-hover:text-orange-400 transition-colors"
+                      />
                     <span>{label}</span>
                     <span className="ml-auto text-xs text-muted-foreground/50">
                       ↗
@@ -186,8 +186,8 @@ export default function Contact() {
                 animate={{ scale: 1, opacity: 1 }}
                 className="h-full flex flex-col items-center justify-center text-center py-16 px-8 rounded-2xl border border-border bg-card min-h-[400px]"
               >
-                <div className="w-16 h-16 rounded-full bg-indigo-500/10 flex items-center justify-center mb-5">
-                  <Send size={24} className="text-indigo-400" />
+                <div className="w-16 h-16 rounded-full bg-orange-500/10 flex items-center justify-center mb-5">
+                  <Send size={24} className="text-orange-400" />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-2">
                   Message sent! 🎉
@@ -213,7 +213,7 @@ export default function Contact() {
                       htmlFor="name"
                       className="block text-sm font-medium text-foreground mb-2"
                     >
-                      Name <span className="text-indigo-400">*</span>
+                      Name <span className="text-orange-400">*</span>
                     </label>
                     <input
                       id="name"
@@ -234,7 +234,7 @@ export default function Contact() {
                       htmlFor="email"
                       className="block text-sm font-medium text-foreground mb-2"
                     >
-                      Email <span className="text-indigo-400">*</span>
+                      Email <span className="text-orange-400">*</span>
                     </label>
                     <input
                       id="email"
@@ -276,7 +276,7 @@ export default function Contact() {
                     htmlFor="message"
                     className="block text-sm font-medium text-foreground mb-2"
                   >
-                    Message <span className="text-indigo-400">*</span>
+                    Message <span className="text-orange-400">*</span>
                   </label>
                   <textarea
                     id="message"
@@ -297,7 +297,7 @@ export default function Contact() {
                   disabled={loading}
                   whileHover={!loading ? { scale: 1.01 } : {}}
                   whileTap={!loading ? { scale: 0.99 } : {}}
-                  className="group w-full flex items-center justify-center gap-2.5 px-6 py-3.5 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-60 disabled:cursor-not-allowed text-white rounded-xl font-medium text-sm transition-all duration-200 shadow-lg shadow-indigo-500/25"
+                  className="group w-full flex items-center justify-center gap-2.5 px-6 py-3.5 bg-orange-600 hover:bg-orange-500 disabled:opacity-60 disabled:cursor-not-allowed text-white rounded-xl font-medium text-sm transition-all duration-200 shadow-lg shadow-orange-500/25"
                 >
                   {loading ? (
                     <>

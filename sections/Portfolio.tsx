@@ -13,8 +13,8 @@ const projects = [
     tags: ['LARAVEL', 'VUE', 'TAILWIND CSS', 'INERTIA JS', 'POSTGRESQL'],
     github: 'https://github.com/mrcoffeex',
     live: 'https://dokhub-main-k63oyd.free.laravel.cloud/',
-    gradient: 'from-blue-500/15 to-cyan-500/15',
-    dotColor: 'bg-blue-500',
+    gradient: 'from-teal-400/15 to-orange-500/15',
+    dotColor: 'bg-teal-400',
   },
   {
     id: 2,
@@ -24,8 +24,8 @@ const projects = [
     tags: ['Laravel', 'Filament', 'Alpine.js', 'Tailwind CSS', 'MySQL'],
     github: 'https://github.com/mrcoffeex',
     live: 'https://infra.pbodavaodelsur.com/',
-    gradient: 'from-purple-500/15 to-indigo-500/15',
-    dotColor: 'bg-purple-500',
+    gradient: 'from-orange-500/15 to-teal-400/15',
+    dotColor: 'bg-orange-500',
   },
   {
     id: 3,
@@ -35,8 +35,8 @@ const projects = [
     tags: ['PHP', 'MySQL', 'Bootstrap', 'JavaScript'],
     github: 'https://github.com/mrcoffeex',
     live: '#',
-    gradient: 'from-blue-500/15 to-cyan-500/15',
-    dotColor: 'bg-blue-500',
+    gradient: 'from-teal-400/15 to-orange-500/15',
+    dotColor: 'bg-teal-400',
   },
   {
     id: 4,
@@ -46,8 +46,8 @@ const projects = [
     tags: ['PHP', 'MySQL', 'Bootstrap', 'JavaScript'],
     github: 'https://github.com/mrcoffeex',
     live: 'https://dts.pbodavaodelsur.com/',
-    gradient: 'from-indigo-500/15 to-blue-500/15',
-    dotColor: 'bg-indigo-500',
+    gradient: 'from-orange-500/15 to-teal-400/15',
+    dotColor: 'bg-orange-500',
   },
 ]
 
@@ -91,7 +91,7 @@ export default function Portfolio() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.08 }}
               whileHover={{ y: -5 }}
-              className="group relative flex flex-col p-6 rounded-2xl border border-border bg-card hover:border-indigo-500/40 transition-all duration-300 overflow-hidden"
+              className="group relative flex flex-col p-6 rounded-2xl border border-border bg-card hover:border-orange-500/40 transition-all duration-300 overflow-hidden"
             >
               {/* Gradient hover overlay */}
               <div
@@ -130,7 +130,7 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                <h3 className="font-semibold text-base text-foreground mb-2.5 group-hover:text-indigo-400 transition-colors">
+                <h3 className="font-semibold text-base text-foreground mb-2.5 group-hover:text-orange-400 transition-colors">
                   {project.title}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">
@@ -165,7 +165,7 @@ export default function Portfolio() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setShowAll(true)}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border hover:border-indigo-500/50 bg-card hover:bg-muted text-foreground font-medium text-sm transition-all duration-200"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border hover:border-orange-500/50 bg-card hover:bg-muted text-foreground font-medium text-sm transition-all duration-200"
             >
               Show all {projects.length} projects
               <ArrowUpRight size={15} />

@@ -24,7 +24,7 @@ export function ThemeToggle() {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="relative p-2 rounded-lg border border-border bg-card text-muted-foreground hover:text-foreground hover:border-indigo-500/50 transition-colors duration-200"
+      className="relative p-2 rounded-lg border border-border bg-card text-muted-foreground hover:text-foreground hover:border-orange-500/50 transition-colors duration-200"
       aria-label="Toggle theme"
     >
       <motion.span

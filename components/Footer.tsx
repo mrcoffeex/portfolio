@@ -33,7 +33,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="text-center md:text-left">
             <a href="#" className="font-bold text-xl text-foreground">
-              Kent<span className="text-indigo-500">.</span>
+              Kent<span className="text-orange-500">.</span>
             </a>
             <p className="text-sm text-muted-foreground mt-1">
               Full Stack Developer
@@ -62,7 +62,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="p-2 rounded-lg border border-border text-muted-foreground hover:text-foreground hover:border-indigo-500/50 bg-card transition-all duration-200"
+                className="p-2 rounded-lg border border-border text-muted-foreground hover:text-foreground hover:border-orange-500/50 bg-card transition-all duration-200"
               >
                 <Icon size={16} />
               </a>
@@ -74,10 +74,10 @@ export default function Footer() {
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} Kent Gocotano. All rights reserved.
           </p>
-          <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-muted-foreground">
             Built with{' '}
-            <span className="text-indigo-400">Next.js</span> &{' '}
-            <span className="text-indigo-400">Tailwind CSS</span>
+            <span className="text-orange-400">Next.js</span> &{' '}
+            <span className="text-orange-400">Tailwind CSS</span>
           </p>
         </div>
       </div>

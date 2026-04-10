@@ -87,11 +87,11 @@ export default function About() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.25 + i * 0.08 }}
               whileHover={{ y: -4 }}
-              className="p-6 rounded-xl border border-border bg-card hover:border-indigo-500/40 transition-all duration-300 group cursor-default"
+              className="p-6 rounded-xl border border-border bg-card hover:border-orange-500/40 transition-all duration-300 group cursor-default"
             >
-              <div className="w-10 h-10 rounded-lg bg-indigo-500/10 flex items-center justify-center mb-4 group-hover:bg-indigo-500/20 transition-colors">
-                <Icon size={20} className="text-indigo-400" />
-              </div>
+                <div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center mb-4 group-hover:bg-orange-500/20 transition-colors">
+                  <Icon size={20} className="text-orange-400" />
+                </div>
               <h3 className="font-semibold text-foreground mb-2">{title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {description}

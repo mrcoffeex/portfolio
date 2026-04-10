@@ -21,13 +21,13 @@ interface ContributionData {
   weeks: Week[]
 }
 
-// Map GitHub's green palette to theme-aware indigo/purple palette
+// Map GitHub's green palette to an orange/teal palette for this theme
 function getColor(count: number, isDark: boolean): string {
-  if (count === 0) return isDark ? '#1a1a2e' : '#eef0f5'
-  if (count <= 2)  return isDark ? '#3730a3' : '#c7d2fe'
-  if (count <= 5)  return isDark ? '#4f46e5' : '#818cf8'
-  if (count <= 10) return isDark ? '#6366f1' : '#6366f1'
-  return isDark ? '#a78bfa' : '#4f46e5'
+  if (count === 0) return isDark ? '#071117' : '#eef2f5'
+  if (count <= 2)  return isDark ? '#064e3b' : '#bbf7d0'
+  if (count <= 5)  return isDark ? '#0f766e' : '#2dd4bf'
+  if (count <= 10) return isDark ? '#92400e' : '#fb923c'
+  return isDark ? '#f97316' : '#f97316'
 }
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -49,7 +49,7 @@ export default function GitHubContributions() {
   if (error) {
     return (
       <p className="text-sm text-muted-foreground font-mono">
-        GitHub activity unavailable — set <span className="text-indigo-400">GITHUB_TOKEN</span> to enable.
+        GitHub activity unavailable — set <span className="text-orange-400">GITHUB_TOKEN</span> to enable.
       </p>
     )
   }
