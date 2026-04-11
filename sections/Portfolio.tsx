@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { Github, ArrowUpRight } from 'lucide-react'
+import ProjectThumbnail from '../components/ProjectThumbnail'
 
 const projects = [
   {
@@ -11,10 +12,11 @@ const projects = [
     description:
       'DokHUb is a Full Stack Laravel StartUp project designed to streamline doctor appointment scheduling and management. It features a user-friendly interface for patients and doctors, real-time notifications, AI features, and secure data handling.',
     tags: ['LARAVEL', 'VUE', 'TAILWIND CSS', 'INERTIA JS', 'POSTGRESQL'],
-    github: 'https://github.com/mrcoffeex',
+    github: 'https://github.com/mrcoffeex/dokhub',
     live: 'https://dokhub-main-k63oyd.free.laravel.cloud/',
     gradient: 'from-teal-400/15 to-orange-500/15',
     dotColor: 'bg-teal-400',
+    image: '/images/projects/dokhub.png',
   },
   {
     id: 2,
@@ -22,10 +24,11 @@ const projects = [
     description:
       'Streamline procurement, obligation, implementation, and payment tracking with actionable transparency.',
     tags: ['Laravel', 'Filament', 'Alpine.js', 'Tailwind CSS', 'MySQL'],
-    github: 'https://github.com/mrcoffeex',
+    github: 'https://github.com/mrcoffeex/pbo-monitoring',
     live: 'https://infra.pbodavaodelsur.com/',
     gradient: 'from-orange-500/15 to-teal-400/15',
     dotColor: 'bg-orange-500',
+    image: '/images/projects/infra-monitoring.png',
   },
   {
     id: 3,
@@ -37,6 +40,7 @@ const projects = [
     live: '#',
     gradient: 'from-teal-400/15 to-orange-500/15',
     dotColor: 'bg-teal-400',
+    image: '/images/projects/tabulax.png',
   },
   {
     id: 4,
@@ -44,10 +48,11 @@ const projects = [
     description:
       'The official document transmission platform for the Davao Del Sur Provincial Budget Office — secure, tracked, and transparent.',
     tags: ['PHP', 'MySQL', 'Bootstrap', 'JavaScript'],
-    github: 'https://github.com/mrcoffeex',
+    github: 'https://github.com/mrcoffeex/',
     live: 'https://dts.pbodavaodelsur.com/',
     gradient: 'from-orange-500/15 to-teal-400/15',
     dotColor: 'bg-orange-500',
+    image: '/images/projects/pbo-dts.png',
   },
 ]
 
@@ -99,6 +104,9 @@ export default function Portfolio() {
               />
 
               <div className="relative flex flex-col h-full">
+                <div className="mb-4">
+                  <ProjectThumbnail title={project.title} gradient={project.gradient} src={project.image} />
+                </div>
                 {/* Card header */}
                 <div className="flex items-start justify-between mb-5">
                   <div className="flex items-center gap-2">
