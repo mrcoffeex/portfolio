@@ -14,7 +14,7 @@ const techStack = [
   },
   {
     category: 'Database & Cloud',
-    items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis'],
+    items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Supabase', 'Laravel Cloud', 'DigitalOcean'],
   },
   {
     category: 'DevOps & Tools',
