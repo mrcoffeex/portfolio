@@ -3,18 +3,20 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { Github, ArrowUpRight } from 'lucide-react'
+import ProjectThumbnail from '../components/ProjectThumbnail'
 
 const projects = [
   {
     id: 1,
-    title: 'PBO DTS',
+    title: 'DokHUb',
     description:
-      'The official document transmission platform for the Davao Del Sur Provincial Budget Office — secure, tracked, and transparent.',
-    tags: ['PHP', 'MySQL', 'Bootstrap', 'JavaScript'],
-    github: 'https://github.com/mrcoffeex',
-    live: 'https://dts.pbodavaodelsur.com/',
-    gradient: 'from-indigo-500/15 to-blue-500/15',
-    dotColor: 'bg-indigo-500',
+      'DokHUb is a Full Stack Laravel StartUp project designed to streamline doctor appointment scheduling and management. It features a user-friendly interface for patients and doctors, real-time notifications, AI features, and secure data handling.',
+    tags: ['LARAVEL', 'VUE', 'TAILWIND CSS', 'INERTIA JS', 'POSTGRESQL'],
+    github: 'https://github.com/mrcoffeex/dokhub',
+    live: 'https://dokhub-main-k63oyd.free.laravel.cloud/',
+    gradient: 'from-teal-400/15 to-orange-500/15',
+    dotColor: 'bg-teal-400',
+    image: '/images/projects/dokhub.png',
   },
   {
     id: 2,
@@ -22,10 +24,11 @@ const projects = [
     description:
       'Streamline procurement, obligation, implementation, and payment tracking with actionable transparency.',
     tags: ['Laravel', 'Filament', 'Alpine.js', 'Tailwind CSS', 'MySQL'],
-    github: 'https://github.com/mrcoffeex',
+    github: 'https://github.com/mrcoffeex/pbo-monitoring',
     live: 'https://infra.pbodavaodelsur.com/',
-    gradient: 'from-purple-500/15 to-indigo-500/15',
-    dotColor: 'bg-purple-500',
+    gradient: 'from-orange-500/15 to-teal-400/15',
+    dotColor: 'bg-orange-500',
+    image: '/images/projects/infra-monitoring.png',
   },
   {
     id: 3,
@@ -35,8 +38,21 @@ const projects = [
     tags: ['PHP', 'MySQL', 'Bootstrap', 'JavaScript'],
     github: 'https://github.com/mrcoffeex',
     live: '#',
-    gradient: 'from-blue-500/15 to-cyan-500/15',
-    dotColor: 'bg-blue-500',
+    gradient: 'from-teal-400/15 to-orange-500/15',
+    dotColor: 'bg-teal-400',
+    image: '/images/projects/tabulax.png',
+  },
+  {
+    id: 4,
+    title: 'PBO DTS',
+    description:
+      'The official document transmission platform for the Davao Del Sur Provincial Budget Office — secure, tracked, and transparent.',
+    tags: ['PHP', 'MySQL', 'Bootstrap', 'JavaScript'],
+    github: 'https://github.com/mrcoffeex/',
+    live: 'https://dts.pbodavaodelsur.com/',
+    gradient: 'from-orange-500/15 to-teal-400/15',
+    dotColor: 'bg-orange-500',
+    image: '/images/projects/pbo-dts.png',
   },
 ]
 
@@ -80,7 +96,7 @@ export default function Portfolio() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.08 }}
               whileHover={{ y: -5 }}
-              className="group relative flex flex-col p-6 rounded-2xl border border-border bg-card hover:border-indigo-500/40 transition-all duration-300 overflow-hidden"
+              className="group relative flex flex-col p-6 rounded-2xl border border-border bg-card hover:border-orange-500/40 transition-all duration-300 overflow-hidden"
             >
               {/* Gradient hover overlay */}
               <div
@@ -88,6 +104,9 @@ export default function Portfolio() {
               />
 
               <div className="relative flex flex-col h-full">
+                <div className="mb-4">
+                  <ProjectThumbnail title={project.title} gradient={project.gradient} src={project.image} />
+                </div>
                 {/* Card header */}
                 <div className="flex items-start justify-between mb-5">
                   <div className="flex items-center gap-2">
@@ -119,7 +138,7 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                <h3 className="font-semibold text-base text-foreground mb-2.5 group-hover:text-indigo-400 transition-colors">
+                <h3 className="font-semibold text-base text-foreground mb-2.5 group-hover:text-orange-400 transition-colors">
                   {project.title}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">
@@ -154,7 +173,7 @@ export default function Portfolio() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setShowAll(true)}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border hover:border-indigo-500/50 bg-card hover:bg-muted text-foreground font-medium text-sm transition-all duration-200"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border hover:border-orange-500/50 bg-card hover:bg-muted text-foreground font-medium text-sm transition-all duration-200"
             >
               Show all {projects.length} projects
               <ArrowUpRight size={15} />

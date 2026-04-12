@@ -1,15 +1,10 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/providers/ThemeProvider'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-})
+// Using Google Fonts via CSS @import in globals.css to avoid Turbopack build-time fetch
 
 export const metadata: Metadata = {
   title: 'Kent Gocotano — Full Stack Developer',
@@ -53,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={inter.variable}>
+    <html lang="en" suppressHydrationWarning>
       <body className="antialiased">
         <ThemeProvider>
           <div className="min-h-screen bg-background text-foreground">

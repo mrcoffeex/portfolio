@@ -39,7 +39,7 @@ export default function Navbar() {
           href="#"
           className="font-bold text-lg tracking-tight text-foreground hover:opacity-80 transition-opacity"
         >
-          Kent<span className="text-indigo-500">.</span>
+          Kent<span className="text-orange-500">.</span>
         </a>
 
         {/* Desktop Nav */}

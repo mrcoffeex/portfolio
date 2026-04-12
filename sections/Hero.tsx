@@ -25,9 +25,9 @@ export default function Hero() {
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
       {/* Background gradient orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-indigo-500/[0.07] rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -right-40 w-[600px] h-[600px] bg-purple-500/[0.07] rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-blue-500/[0.04] rounded-full blur-3xl" />
+        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-orange-500/[0.07] rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 -right-40 w-[600px] h-[600px] bg-teal-400/[0.07] rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-teal-400/[0.04] rounded-full blur-3xl" />
       </div>
 
       {/* Subtle grid */}
@@ -42,8 +42,8 @@ export default function Hero() {
         >
           {/* Availability badge */}
           <motion.div variants={item} className="mb-8">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-400 text-sm font-medium backdrop-blur-sm">
-              <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-orange-500/30 bg-orange-500/10 text-orange-400 text-sm font-medium backdrop-blur-sm">
+              <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
               Available for new projects
               <Sparkles size={14} />
             </span>
@@ -55,9 +55,7 @@ export default function Hero() {
             className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight leading-[1.05] mb-6"
           >
             <span className="text-foreground">Hi, I&apos;m </span>
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 animate-pulse-slow">
-              Kent
-            </span>
+            <span className="gradient-text animate-pulse-slow">Kent</span>
           </motion.h1>
 
           {/* Role tag */}
@@ -92,7 +90,7 @@ export default function Hero() {
           >
             <a
               href="#portfolio"
-              className="group inline-flex items-center gap-2.5 px-7 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-medium text-sm transition-all duration-200 shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-2.5 px-7 py-3.5 bg-orange-600 hover:bg-orange-500 text-white rounded-xl font-medium text-sm transition-all duration-200 shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 hover:-translate-y-0.5"
             >
               View My Work
               <ArrowRight
@@ -102,7 +100,7 @@ export default function Hero() {
             </a>
             <a
               href="#contact"
-              className="group inline-flex items-center gap-2.5 px-7 py-3.5 border border-border hover:border-indigo-500/50 bg-card hover:bg-muted text-foreground rounded-xl font-medium text-sm transition-all duration-200 hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-2.5 px-7 py-3.5 border border-border hover:border-orange-500/50 bg-card hover:bg-muted text-foreground rounded-xl font-medium text-sm transition-all duration-200 hover:-translate-y-0.5"
             >
               Get in Touch
             </a>

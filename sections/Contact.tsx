@@ -8,8 +8,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'gocotano.kentjohn@example.com',
-    href: 'mailto:gocotano.kentjohn@example.com',
+    value: 'gocotano.kentjohn@gmail.com',
+    href: 'mailto:gocotano.kentjohn@gmail.com',
   },
   {
     icon: MapPin,
@@ -49,18 +49,40 @@ export default function Contact() {
   })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    // Simulate form submission — replace with your API call
-    await new Promise((res) => setTimeout(res, 1000))
-    setLoading(false)
-    setSubmitted(true)
+    setError(null)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formState),
+      })
+
+      const data = await res.json().catch(() => ({}))
+
+      if (!res.ok) {
+        const errMsg = data?.error || 'Failed to send message'
+        const details = data?.details
+        setError(details ? `${errMsg} — ${details}` : errMsg)
+        return
+      }
+
+      setSubmitted(true)
+      setFormState({ name: '', email: '', subject: '', message: '' })
+    } catch (err: any) {
+      console.error(err)
+      setError(err?.message || 'Something went wrong. Please try again later.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   const inputBase =
-    'w-full px-4 py-2.5 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-indigo-500/60 focus:ring-2 focus:ring-indigo-500/15 transition-all text-sm'
+    'w-full px-4 py-2.5 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-orange-500/60 focus:ring-2 focus:ring-orange-500/15 transition-all text-sm'
 
   return (
     <section id="contact" ref={ref} className="py-24 sm:py-32">
@@ -98,10 +120,10 @@ export default function Contact() {
               {contactInfo.map(({ icon: Icon, label, value, href }) => (
                 <div
                   key={label}
-                  className="flex items-center gap-4 p-4 rounded-xl border border-border bg-card hover:border-indigo-500/30 transition-colors"
+                  className="flex items-center gap-4 p-4 rounded-xl border border-border bg-card hover:border-orange-500/30 transition-colors"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-indigo-500/10 flex items-center justify-center flex-shrink-0">
-                    <Icon size={18} className="text-indigo-400" />
+                  <div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0">
+                    <Icon size={18} className="text-orange-400" />
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground mb-0.5">
@@ -110,7 +132,7 @@ export default function Contact() {
                     {href ? (
                       <a
                         href={href}
-                        className="text-sm font-medium text-foreground hover:text-indigo-400 transition-colors"
+                        className="text-sm font-medium text-foreground hover:text-orange-400 transition-colors"
                       >
                         {value}
                       </a>
@@ -135,12 +157,12 @@ export default function Contact() {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 px-4 py-3 rounded-xl border border-border bg-card text-sm text-muted-foreground hover:text-foreground hover:border-indigo-500/40 hover:bg-muted transition-all group"
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl border border-border bg-card text-sm text-muted-foreground hover:text-foreground hover:border-orange-500/40 hover:bg-muted transition-all group"
                   >
-                    <Icon
-                      size={16}
-                      className="group-hover:text-indigo-400 transition-colors"
-                    />
+                      <Icon
+                        size={16}
+                        className="group-hover:text-orange-400 transition-colors"
+                      />
                     <span>{label}</span>
                     <span className="ml-auto text-xs text-muted-foreground/50">
                       ↗
@@ -164,8 +186,8 @@ export default function Contact() {
                 animate={{ scale: 1, opacity: 1 }}
                 className="h-full flex flex-col items-center justify-center text-center py-16 px-8 rounded-2xl border border-border bg-card min-h-[400px]"
               >
-                <div className="w-16 h-16 rounded-full bg-indigo-500/10 flex items-center justify-center mb-5">
-                  <Send size={24} className="text-indigo-400" />
+                <div className="w-16 h-16 rounded-full bg-orange-500/10 flex items-center justify-center mb-5">
+                  <Send size={24} className="text-orange-400" />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-2">
                   Message sent! 🎉
@@ -180,13 +202,18 @@ export default function Contact() {
                 onSubmit={handleSubmit}
                 className="p-7 rounded-2xl border border-border bg-card space-y-5"
               >
+                {error && (
+                  <div className="text-sm text-red-500 bg-red-50 p-3 rounded">
+                    {error}
+                  </div>
+                )}
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label
                       htmlFor="name"
                       className="block text-sm font-medium text-foreground mb-2"
                     >
-                      Name <span className="text-indigo-400">*</span>
+                      Name <span className="text-orange-400">*</span>
                     </label>
                     <input
                       id="name"
@@ -199,6 +226,7 @@ export default function Contact() {
                       }
                       placeholder="Your name"
                       className={inputBase}
+                      disabled={loading}
                     />
                   </div>
                   <div>
@@ -206,7 +234,7 @@ export default function Contact() {
                       htmlFor="email"
                       className="block text-sm font-medium text-foreground mb-2"
                     >
-                      Email <span className="text-indigo-400">*</span>
+                      Email <span className="text-orange-400">*</span>
                     </label>
                     <input
                       id="email"
@@ -219,6 +247,7 @@ export default function Contact() {
                       }
                       placeholder="you@example.com"
                       className={inputBase}
+                      disabled={loading}
                     />
                   </div>
                 </div>
@@ -247,7 +276,7 @@ export default function Contact() {
                     htmlFor="message"
                     className="block text-sm font-medium text-foreground mb-2"
                   >
-                    Message <span className="text-indigo-400">*</span>
+                    Message <span className="text-orange-400">*</span>
                   </label>
                   <textarea
                     id="message"
@@ -259,6 +288,7 @@ export default function Contact() {
                     }
                     placeholder="Tell me about your project, timeline, and budget..."
                     className={`${inputBase} resize-none`}
+                    disabled={loading}
                   />
                 </div>
 
@@ -267,7 +297,7 @@ export default function Contact() {
                   disabled={loading}
                   whileHover={!loading ? { scale: 1.01 } : {}}
                   whileTap={!loading ? { scale: 0.99 } : {}}
-                  className="group w-full flex items-center justify-center gap-2.5 px-6 py-3.5 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-60 disabled:cursor-not-allowed text-white rounded-xl font-medium text-sm transition-all duration-200 shadow-lg shadow-indigo-500/25"
+                  className="group w-full flex items-center justify-center gap-2.5 px-6 py-3.5 bg-orange-600 hover:bg-orange-500 disabled:opacity-60 disabled:cursor-not-allowed text-white rounded-xl font-medium text-sm transition-all duration-200 shadow-lg shadow-orange-500/25"
                 >
                   {loading ? (
                     <>

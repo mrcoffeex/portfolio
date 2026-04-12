@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,20 +7,24 @@
 @layer base {
   :root {
     --background: 255 255 255;
-    --foreground: 10 10 10;
+    --foreground: 17 24 39;
     --muted: 243 244 246;
     --muted-foreground: 107 114 128;
     --border: 229 231 235;
-    --card: 249 250 251;
+    --card: 255 255 255;
+    --primary: 249 115 22;
+    --accent: 45 212 191;
   }
 
   .dark {
-    --background: 8 8 12;
-    --foreground: 250 250 252;
+    --background: 7 10 12;
+    --foreground: 245 245 247;
     --muted: 18 18 24;
     --muted-foreground: 156 163 175;
     --border: 31 31 42;
-    --card: 14 14 20;
+    --card: 18 18 24;
+    --primary: 249 115 22;
+    --accent: 45 212 191;
   }
 
   html {
@@ -28,6 +34,9 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
+    /* Use Inter from Google Fonts (fallback to system sans) */
+    --font-inter: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    font-family: var(--font-inter);
   }
 
   * {
@@ -37,10 +46,14 @@
 
 @layer utilities {
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(90deg, rgb(var(--primary)), rgb(var(--accent)));
   }
 
   .section-number {
-    @apply text-xs font-mono text-indigo-400 tracking-widest uppercase;
+    @apply text-xs font-mono tracking-widest uppercase;
+    color: rgb(var(--primary));
   }
 }
