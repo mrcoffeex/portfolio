@@ -59,10 +59,14 @@ export default function Hero() {
           </motion.h1>
 
           {/* Role tag */}
-          <motion.div variants={item} className="mb-6">
+          <motion.div variants={item} className="mb-6 flex flex-row gap-2">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-border bg-card text-muted-foreground text-sm font-mono">
               <span className="text-green-400">▸</span>
-              Full Stack Developer
+              Full Stack Web Developer
+            </span>
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-border bg-card text-muted-foreground text-sm font-mono">
+              <span className="text-green-400">▸</span>
+              AI Automation Specialist
             </span>
           </motion.div>
 
