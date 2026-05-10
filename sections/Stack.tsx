@@ -1,38 +1,63 @@
-'use client'
+"use client";
 
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
-import GitHubContributions from '@/components/GitHubContributions'
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import GitHubContributions from "@/components/GitHubContributions";
 
 const techStack = [
   {
-    category: 'Frontend',
-    items: ['React', 'Next.js', 'Vue.js', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'Bootstrap', 'Framer Motion'],
+    category: "Frontend",
+    items: [
+      "React",
+      "Next.js",
+      "Vue.js",
+      "TypeScript",
+      "JavaScript",
+      "Tailwind CSS",
+      "Bootstrap",
+      "Framer Motion",
+    ],
   },
   {
-    category: 'Backend',
-    items: ['Node.js', 'Express.js', 'Laravel', 'PHP', 'REST APIs', 'PEST'],
+    category: "Backend",
+    items: ["Node.js", "Express.js", "Laravel", "PHP", "REST APIs", "PEST"],
   },
   {
-    category: 'Database & Cloud',
-    items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Supabase', 'Laravel Cloud', 'DigitalOcean'],
+    category: "Database & Cloud",
+    items: [
+      "PostgreSQL",
+      "MySQL",
+      "MongoDB",
+      "Redis",
+      "Supabase",
+      "Laravel Cloud",
+      "DigitalOcean",
+    ],
   },
   {
-    category: 'DevOps & Tools',
-    items: ['GitHub Copilot', 'Claude Code', 'Cursor AI', 'n8n', 'Git', 'GitHub', 'Docker', 'Vercel', 'Linux / CLI', 'VS Code', 'Wordpress'],
+    category: "DevOps & Tools",
+    items: [
+      "GitHub Copilot",
+      "Claude Code",
+      "Cursor AI",
+      "n8n",
+      "Git",
+      "GitHub",
+      "Docker",
+      "Vercel",
+      "Linux / CLI",
+      "VS Code",
+      "Wordpress",
+    ],
   },
-]
+];
 
 export default function Stack() {
-  const ref = useRef<HTMLElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const ref = useRef<HTMLElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section
-      id="stack"
-      ref={ref}
-      className="py-24 sm:py-32 bg-muted/20"
-    >
+    <section id="stack" ref={ref} className="py-24 sm:py-32 bg-muted/20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section header */}
         <motion.div
@@ -46,8 +71,7 @@ export default function Stack() {
             <div className="h-px flex-1 bg-border" />
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Tools of the{' '}
-            <span className="gradient-text">trade</span>
+            Tools of the <span className="gradient-text">trade</span>
           </h2>
           <p className="text-muted-foreground max-w-xl leading-relaxed">
             A curated selection of technologies I use to build robust, scalable
@@ -75,7 +99,10 @@ export default function Stack() {
                     key={name}
                     initial={{ opacity: 0, scale: 0.85 }}
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ duration: 0.25, delay: catIdx * 0.1 + i * 0.04 + 0.2 }}
+                    transition={{
+                      duration: 0.25,
+                      delay: catIdx * 0.1 + i * 0.04 + 0.2,
+                    }}
                     whileHover={{ scale: 1.05, y: -1 }}
                     className="px-3 py-1.5 text-sm rounded-lg border border-border bg-background text-muted-foreground hover:text-foreground hover:border-orange-500/40 hover:bg-muted transition-all duration-200 cursor-default"
                   >
@@ -101,5 +128,5 @@ export default function Stack() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

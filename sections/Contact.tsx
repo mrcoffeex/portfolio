@@ -1,88 +1,96 @@
-'use client'
+"use client";
 
-import { motion, useInView } from 'framer-motion'
-import { useRef, useState } from 'react'
-import { Send, Github, Linkedin, Twitter, Mail, MapPin, Clock } from 'lucide-react'
+import { motion, useInView } from "framer-motion";
+import { useRef, useState } from "react";
+import {
+  Send,
+  Github,
+  Linkedin,
+  Twitter,
+  Mail,
+  MapPin,
+  Clock,
+} from "lucide-react";
 
 const contactInfo = [
   {
     icon: Mail,
-    label: 'Email',
-    value: 'gocotano.kentjohn@gmail.com',
-    href: 'mailto:gocotano.kentjohn@gmail.com',
+    label: "Email",
+    value: "gocotano.kentjohn@gmail.com",
+    href: "mailto:gocotano.kentjohn@gmail.com",
   },
   {
     icon: MapPin,
-    label: 'Location',
-    value: 'Philippines 🇵🇭',
+    label: "Location",
+    value: "Philippines 🇵🇭",
     href: null,
   },
   {
     icon: Clock,
-    label: 'Response time',
-    value: 'Within 24 hours',
+    label: "Response time",
+    value: "Within 24 hours",
     href: null,
   },
-]
+];
 
 const socialLinks = [
   {
     icon: Github,
-    label: 'GitHub',
-    href: 'https://github.com/mrcoffeex',
+    label: "GitHub",
+    href: "https://github.com/mrcoffeex",
   },
   {
     icon: Linkedin,
-    label: 'LinkedIn',
-    href: 'https://linkedin.com/in/kentjohngo/',
+    label: "LinkedIn",
+    href: "https://linkedin.com/in/kentjohngo/",
   },
-]
+];
 
 export default function Contact() {
-  const ref = useRef<HTMLElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const ref = useRef<HTMLElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [formState, setFormState] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  })
-  const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
-    setError(null)
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formState),
-      })
+      });
 
-      const data = await res.json().catch(() => ({}))
+      const data = await res.json().catch(() => ({}));
 
       if (!res.ok) {
-        const errMsg = data?.error || 'Failed to send message'
-        const details = data?.details
-        setError(details ? `${errMsg} — ${details}` : errMsg)
-        return
+        const errMsg = data?.error || "Failed to send message";
+        const details = data?.details;
+        setError(details ? `${errMsg} — ${details}` : errMsg);
+        return;
       }
 
-      setSubmitted(true)
-      setFormState({ name: '', email: '', subject: '', message: '' })
+      setSubmitted(true);
+      setFormState({ name: "", email: "", subject: "", message: "" });
     } catch (err: any) {
-      console.error(err)
-      setError(err?.message || 'Something went wrong. Please try again later.')
+      console.error(err);
+      setError(err?.message || "Something went wrong. Please try again later.");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const inputBase =
-    'w-full px-4 py-2.5 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-orange-500/60 focus:ring-2 focus:ring-orange-500/15 transition-all text-sm'
+    "w-full px-4 py-2.5 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-orange-500/60 focus:ring-2 focus:ring-orange-500/15 transition-all text-sm";
 
   return (
     <section id="contact" ref={ref} className="py-24 sm:py-32">
@@ -99,8 +107,7 @@ export default function Contact() {
             <div className="h-px flex-1 bg-border" />
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Let&apos;s work{' '}
-            <span className="gradient-text">together</span>
+            Let&apos;s work <span className="gradient-text">together</span>
           </h2>
           <p className="text-muted-foreground max-w-xl leading-relaxed">
             Have a project in mind, or just want to say hello? My inbox is
@@ -159,10 +166,10 @@ export default function Contact() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 px-4 py-3 rounded-xl border border-border bg-card text-sm text-muted-foreground hover:text-foreground hover:border-orange-500/40 hover:bg-muted transition-all group"
                   >
-                      <Icon
-                        size={16}
-                        className="group-hover:text-orange-400 transition-colors"
-                      />
+                    <Icon
+                      size={16}
+                      className="group-hover:text-orange-400 transition-colors"
+                    />
                     <span>{label}</span>
                     <span className="ml-auto text-xs text-muted-foreground/50">
                       ↗
@@ -193,8 +200,8 @@ export default function Contact() {
                   Message sent! 🎉
                 </h3>
                 <p className="text-muted-foreground max-w-sm">
-                  Thanks for reaching out. I&apos;ll review your message and
-                  get back to you within 24 hours.
+                  Thanks for reaching out. I&apos;ll review your message and get
+                  back to you within 24 hours.
                 </p>
               </motion.div>
             ) : (
@@ -320,5 +327,5 @@ export default function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }

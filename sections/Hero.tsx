@@ -1,7 +1,7 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { ArrowRight, Github, Linkedin, Sparkles } from 'lucide-react'
+import { motion } from "framer-motion";
+import { ArrowRight, Github, Linkedin, Sparkles } from "lucide-react";
 
 const container = {
   hidden: { opacity: 0 },
@@ -9,7 +9,7 @@ const container = {
     opacity: 1,
     transition: { staggerChildren: 0.1, delayChildren: 0.2 },
   },
-}
+};
 
 const item = {
   hidden: { opacity: 0, y: 24 },
@@ -18,7 +18,7 @@ const item = {
     y: 0,
     transition: { duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] },
   },
-}
+};
 
 export default function Hero() {
   return (
@@ -75,12 +75,12 @@ export default function Hero() {
             variants={item}
             className="text-lg sm:text-xl text-muted-foreground max-w-2xl leading-relaxed mb-10"
           >
-            I craft{' '}
+            I craft{" "}
             <span className="text-foreground font-medium">
               scalable, high-performance
-            </span>{' '}
-            web applications. Focused on clean code, great
-            client experience, and products that{' '}
+            </span>{" "}
+            web applications. Focused on clean code, great client experience,
+            and products that{" "}
             <span className="text-foreground font-medium">
               users actually love
             </span>
@@ -154,12 +154,12 @@ export default function Hero() {
         </span>
         <motion.div
           animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           className="w-4 h-7 rounded-full border-2 border-border flex items-start justify-center pt-1"
         >
           <div className="w-0.5 h-2 bg-muted-foreground rounded-full" />
         </motion.div>
       </motion.div>
     </section>
-  )
+  );
 }

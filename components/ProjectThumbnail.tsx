@@ -1,25 +1,27 @@
-"use client"
+"use client";
 
-import React from 'react'
-import Image from 'next/image'
+import React from "react";
+import Image from "next/image";
 
 type ProjectThumbnailProps = {
-  title: string
-  gradient?: string
-  src?: string
-  alt?: string
-  className?: string
-}
+  title: string;
+  gradient?: string;
+  src?: string;
+  alt?: string;
+  className?: string;
+};
 
 export default function ProjectThumbnail({
   title,
-  gradient = 'from-teal-400/15 to-orange-500/15',
+  gradient = "from-teal-400/15 to-orange-500/15",
   src,
   alt,
   className,
 }: ProjectThumbnailProps) {
   return (
-    <div className={`relative rounded-xl overflow-hidden h-44 w-full ${className ?? ''}`}>
+    <div
+      className={`relative rounded-xl overflow-hidden h-44 w-full ${className ?? ""}`}
+    >
       {src ? (
         <div className="absolute inset-0">
           <Image
@@ -44,5 +46,5 @@ export default function ProjectThumbnail({
         {title}
       </div>
     </div>
-  )
+  );
 }

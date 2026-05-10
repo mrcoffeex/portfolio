@@ -1,29 +1,29 @@
-import { Github, Twitter, Linkedin, Mail } from 'lucide-react'
+import { Github, Twitter, Linkedin, Mail } from "lucide-react";
 
 const socialLinks = [
   {
     icon: Github,
-    href: 'https://github.com/mrcoffeex',
-    label: 'GitHub',
+    href: "https://github.com/mrcoffeex",
+    label: "GitHub",
   },
   {
     icon: Linkedin,
-    href: 'https://linkedin.com/in/kentjohngo/',
-    label: 'LinkedIn',
+    href: "https://linkedin.com/in/kentjohngo/",
+    label: "LinkedIn",
   },
   {
     icon: Mail,
-    href: 'mailto:gocotano.kentjohn@example.com',
-    label: 'Email',
+    href: "mailto:gocotano.kentjohn@example.com",
+    label: "Email",
   },
-]
+];
 
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Stack', href: '#stack' },
-  { label: 'Portfolio', href: '#portfolio' },
-  { label: 'Contact', href: '#contact' },
-]
+  { label: "About", href: "#about" },
+  { label: "Stack", href: "#stack" },
+  { label: "Portfolio", href: "#portfolio" },
+  { label: "Contact", href: "#contact" },
+];
 
 export default function Footer() {
   return (
@@ -74,13 +74,12 @@ export default function Footer() {
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} Kent Gocotano. All rights reserved.
           </p>
-            <p className="text-xs text-muted-foreground">
-            Built with{' '}
-            <span className="text-orange-400">Next.js</span> &{' '}
+          <p className="text-xs text-muted-foreground">
+            Built with <span className="text-orange-400">Next.js</span> &{" "}
             <span className="text-orange-400">Tailwind CSS</span>
           </p>
         </div>
       </div>
     </footer>
-  )
+  );
 }

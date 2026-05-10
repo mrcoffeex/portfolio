@@ -1,29 +1,27 @@
-'use client'
+"use client";
 
-import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
-import { Moon, Sun } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+import { Moon, Sun } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   if (!mounted) {
-    return (
-      <div className="w-9 h-9 rounded-lg border border-border bg-card" />
-    )
+    return <div className="w-9 h-9 rounded-lg border border-border bg-card" />;
   }
 
   return (
     <motion.button
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       className="relative p-2 rounded-lg border border-border bg-card text-muted-foreground hover:text-foreground hover:border-orange-500/50 transition-colors duration-200"
       aria-label="Toggle theme"
     >
@@ -34,8 +32,8 @@ export function ThemeToggle() {
         transition={{ duration: 0.2 }}
         className="block"
       >
-        {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+        {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
       </motion.span>
     </motion.button>
-  )
+  );
 }

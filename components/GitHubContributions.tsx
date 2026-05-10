@@ -1,57 +1,71 @@
-'use client'
+"use client";
 
-import { useEffect, useState } from 'react'
-import { useTheme } from 'next-themes'
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 
 interface ContributionDay {
-  contributionCount: number
-  date: string
-  color: string
+  contributionCount: number;
+  date: string;
+  color: string;
 }
 
 interface Week {
-  contributionDays: ContributionDay[]
+  contributionDays: ContributionDay[];
 }
 
 interface ContributionData {
-  totalContributions: number
-  totalCommits: number
-  totalPRs: number
-  totalIssues: number
-  weeks: Week[]
+  totalContributions: number;
+  totalCommits: number;
+  totalPRs: number;
+  totalIssues: number;
+  weeks: Week[];
 }
 
 // Map GitHub's green palette to an orange/teal palette for this theme
 function getColor(count: number, isDark: boolean): string {
-  if (count === 0) return isDark ? '#071117' : '#eef2f5'
-  if (count <= 2)  return isDark ? '#064e3b' : '#bbf7d0'
-  if (count <= 5)  return isDark ? '#0f766e' : '#2dd4bf'
-  if (count <= 10) return isDark ? '#92400e' : '#fb923c'
-  return isDark ? '#f97316' : '#f97316'
+  if (count === 0) return isDark ? "#071117" : "#eef2f5";
+  if (count <= 2) return isDark ? "#064e3b" : "#bbf7d0";
+  if (count <= 5) return isDark ? "#0f766e" : "#2dd4bf";
+  if (count <= 10) return isDark ? "#92400e" : "#fb923c";
+  return isDark ? "#f97316" : "#f97316";
 }
 
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-const DAYS = ['', 'Mon', '', 'Wed', '', 'Fri', '']
+const MONTHS = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+const DAYS = ["", "Mon", "", "Wed", "", "Fri", ""];
 
 export default function GitHubContributions() {
-  const [data, setData] = useState<ContributionData | null>(null)
-  const [error, setError] = useState(false)
-  const { resolvedTheme } = useTheme()
-  const isDark = resolvedTheme === 'dark'
+  const [data, setData] = useState<ContributionData | null>(null);
+  const [error, setError] = useState(false);
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
 
   useEffect(() => {
-    fetch('/api/github/contributions')
-      .then(r => r.ok ? r.json() : Promise.reject())
+    fetch("/api/github/contributions")
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
       .then(setData)
-      .catch(() => setError(true))
-  }, [])
+      .catch(() => setError(true));
+  }, []);
 
   if (error) {
     return (
       <p className="text-sm text-muted-foreground font-mono">
-        GitHub activity unavailable — set <span className="text-orange-400">GITHUB_TOKEN</span> to enable.
+        GitHub activity unavailable — set{" "}
+        <span className="text-orange-400">GITHUB_TOKEN</span> to enable.
       </p>
-    )
+    );
   }
 
   if (!data) {
@@ -65,43 +79,52 @@ export default function GitHubContributions() {
           <div className="h-8 flex-1 rounded bg-muted" />
         </div>
       </div>
-    )
+    );
   }
 
-  const CELL = 12
-  const GAP = 3
-  const STEP = CELL + GAP
+  const CELL = 12;
+  const GAP = 3;
+  const STEP = CELL + GAP;
 
   // Build month labels from the weeks
-  const monthLabels: { label: string; x: number }[] = []
+  const monthLabels: { label: string; x: number }[] = [];
   data.weeks.forEach((week, wi) => {
-    const firstDay = week.contributionDays[0]
-    if (!firstDay) return
-    const d = new Date(firstDay.date)
+    const firstDay = week.contributionDays[0];
+    if (!firstDay) return;
+    const d = new Date(firstDay.date);
     if (d.getDate() <= 7) {
       // avoid duplicate months
-      const month = MONTHS[d.getMonth()]
-      if (!monthLabels.length || monthLabels[monthLabels.length - 1].label !== month) {
-        monthLabels.push({ label: month, x: wi * STEP })
+      const month = MONTHS[d.getMonth()];
+      if (
+        !monthLabels.length ||
+        monthLabels[monthLabels.length - 1].label !== month
+      ) {
+        monthLabels.push({ label: month, x: wi * STEP });
       }
     }
-  })
+  });
 
-  const DAY_LABEL_W = 28
-  const GRID_OFFSET = DAY_LABEL_W + 4
-  const svgWidth = data.weeks.length * STEP
-  const totalW = GRID_OFFSET + svgWidth
-  const SVG_H = 7 * STEP + 20 // 7 rows + room for month labels
+  const DAY_LABEL_W = 28;
+  const GRID_OFFSET = DAY_LABEL_W + 4;
+  const svgWidth = data.weeks.length * STEP;
+  const totalW = GRID_OFFSET + svgWidth;
+  const SVG_H = 7 * STEP + 20; // 7 rows + room for month labels
 
   return (
     <div className="space-y-5">
       {/* Stats row */}
       <div className="grid grid-cols-3 gap-3">
         {[
-          { label: 'Contributions', value: data.totalContributions.toLocaleString() },
-          { label: 'Commits', value: data.totalCommits.toLocaleString() },
+          {
+            label: "Contributions",
+            value: data.totalContributions.toLocaleString(),
+          },
+          { label: "Commits", value: data.totalCommits.toLocaleString() },
         ].map(({ label, value }) => (
-          <div key={label} className="rounded-lg border border-border bg-background px-4 py-3">
+          <div
+            key={label}
+            className="rounded-lg border border-border bg-background px-4 py-3"
+          >
             <p className="text-lg font-bold text-foreground">{value}</p>
             <p className="text-xs text-muted-foreground mt-0.5">{label}</p>
           </div>
@@ -124,11 +147,11 @@ export default function GitHubContributions() {
               y={i * STEP + CELL + 14}
               fontSize={9}
               textAnchor="end"
-              fill={isDark ? '#6b7280' : '#9ca3af'}
+              fill={isDark ? "#6b7280" : "#9ca3af"}
             >
               {day}
             </text>
-          ) : null
+          ) : null,
         )}
 
         {/* Month labels */}
@@ -138,7 +161,7 @@ export default function GitHubContributions() {
             x={GRID_OFFSET + x}
             y={9}
             fontSize={9}
-            fill={isDark ? '#6b7280' : '#9ca3af'}
+            fill={isDark ? "#6b7280" : "#9ca3af"}
           >
             {label}
           </text>
@@ -158,22 +181,27 @@ export default function GitHubContributions() {
               fill={getColor(day.contributionCount, isDark)}
               className="transition-colors duration-200"
             >
-              <title>{`${day.date}: ${day.contributionCount} contribution${day.contributionCount !== 1 ? 's' : ''}`}</title>
+              <title>{`${day.date}: ${day.contributionCount} contribution${day.contributionCount !== 1 ? "s" : ""}`}</title>
             </rect>
-          ))
+          )),
         )}
       </svg>
 
       {/* Legend */}
       <div className="flex items-center gap-2 text-xs text-muted-foreground justify-end">
         <span>Less</span>
-        {[0, 2, 5, 8, 12].map(count => (
+        {[0, 2, 5, 8, 12].map((count) => (
           <svg key={count} width={CELL} height={CELL}>
-            <rect width={CELL} height={CELL} rx={2} fill={getColor(count, isDark)} />
+            <rect
+              width={CELL}
+              height={CELL}
+              rx={2}
+              fill={getColor(count, isDark)}
+            />
           </svg>
         ))}
         <span>More</span>
       </div>
     </div>
-  )
+  );
 }

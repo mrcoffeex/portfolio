@@ -1,49 +1,49 @@
-'use client'
+"use client";
 
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
-import { Code2, Layers, Zap, Users } from 'lucide-react'
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { Code2, Layers, Zap, Users } from "lucide-react";
 
-const startDate = new Date(2020, 10) // November 2020
-const yearsExp = `${Math.floor((Date.now() - startDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25))}+`
+const startDate = new Date(2020, 10); // November 2020
+const yearsExp = `${Math.floor((Date.now() - startDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25))}+`;
 
 const stats = [
-  { value: yearsExp, label: 'Years Experience' },
-  { value: '30+', label: 'Projects Shipped' },
-  { value: '15+', label: 'Happy Clients' },
-  { value: '100%', label: 'Commitment' },
-]
+  { value: yearsExp, label: "Years Experience" },
+  { value: "30+", label: "Projects Shipped" },
+  { value: "15+", label: "Happy Clients" },
+  { value: "100%", label: "Commitment" },
+];
 
 const highlights = [
   {
     icon: Code2,
-    title: 'Clean Code',
+    title: "Clean Code",
     description:
-      'Writing maintainable, well-structured code with clear naming and solid architecture patterns.',
+      "Writing maintainable, well-structured code with clear naming and solid architecture patterns.",
   },
   {
     icon: Layers,
-    title: 'Full Stack',
+    title: "Full Stack",
     description:
-      'From PostgreSQL/MySQL schemas to pixel-perfect interfaces — I own the complete product lifecycle.',
+      "From PostgreSQL/MySQL schemas to pixel-perfect interfaces — I own the complete product lifecycle.",
   },
   {
     icon: Zap,
-    title: 'Performance First',
+    title: "Performance First",
     description:
-      'Obsessed with Core Web Vitals, fast load times, and smooth 60fps animations.',
+      "Obsessed with Core Web Vitals, fast load times, and smooth 60fps animations.",
   },
   {
     icon: Users,
-    title: 'Team Player',
+    title: "Team Player",
     description:
-      'Clear communicator, great async collaborator, and always focused on delivering real value.',
+      "Clear communicator, great async collaborator, and always focused on delivering real value.",
   },
-]
+];
 
 export default function About() {
-  const ref = useRef<HTMLElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const ref = useRef<HTMLElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <section id="about" ref={ref} className="py-24 sm:py-32">
@@ -60,8 +60,7 @@ export default function About() {
             <div className="h-px flex-1 bg-border" />
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold mb-8">
-            Turning ideas into{' '}
-            <span className="gradient-text">reality</span>
+            Turning ideas into <span className="gradient-text">reality</span>
           </h2>
           <div className="grid md:grid-cols-2 gap-6 text-muted-foreground leading-relaxed">
             <p>
@@ -71,9 +70,9 @@ export default function About() {
               complex problems into simple, beautiful, and intuitive solutions.
             </p>
             <p>
-              With {yearsExp + ' '} years of professional experience. My approach
-              is pragmatic: choose the right tool for the job, keep things
-              simple, and prioritize the user experience above all else.
+              With {yearsExp + " "} years of professional experience. My
+              approach is pragmatic: choose the right tool for the job, keep
+              things simple, and prioritize the user experience above all else.
             </p>
           </div>
         </motion.div>
@@ -89,9 +88,9 @@ export default function About() {
               whileHover={{ y: -4 }}
               className="p-6 rounded-xl border border-border bg-card hover:border-orange-500/40 transition-all duration-300 group cursor-default"
             >
-                <div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center mb-4 group-hover:bg-orange-500/20 transition-colors">
-                  <Icon size={20} className="text-orange-400" />
-                </div>
+              <div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center mb-4 group-hover:bg-orange-500/20 transition-colors">
+                <Icon size={20} className="text-orange-400" />
+              </div>
               <h3 className="font-semibold text-foreground mb-2">{title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {description}
@@ -101,5 +100,5 @@ export default function About() {
         </div>
       </div>
     </section>
-  )
+  );
 }

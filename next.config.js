@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const path = require('path')
+const path = require("path");
 
 const nextConfig = {
   turbopack: {
@@ -7,8 +7,8 @@ const nextConfig = {
     root: path.resolve(__dirname),
   },
   images: {
-    formats: ['image/avif', 'image/webp'],
+    formats: ["image/avif", "image/webp"],
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

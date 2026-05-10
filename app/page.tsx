@@ -1,8 +1,8 @@
-import Hero from '@/sections/Hero'
-import About from '@/sections/About'
-import Stack from '@/sections/Stack'
-import Portfolio from '@/sections/Portfolio'
-import Contact from '@/sections/Contact'
+import Hero from "@/sections/Hero";
+import About from "@/sections/About";
+import Stack from "@/sections/Stack";
+import Portfolio from "@/sections/Portfolio";
+import Contact from "@/sections/Contact";
 
 export default function Home() {
   return (
@@ -13,5 +13,5 @@ export default function Home() {
       <Portfolio />
       <Contact />
     </>
-  )
+  );
 }
