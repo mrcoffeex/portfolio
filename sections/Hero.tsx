@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Github, Linkedin, Sparkles } from "lucide-react";
+import { ArrowRight, Download, Github, Linkedin, Sparkles } from "lucide-react";
 
 const container = {
   hidden: { opacity: 0 },
@@ -107,6 +107,18 @@ export default function Hero() {
               className="group inline-flex items-center gap-2.5 px-7 py-3.5 border border-border hover:border-orange-500/50 bg-card hover:bg-muted text-foreground rounded-xl font-medium text-sm transition-all duration-200 hover:-translate-y-0.5"
             >
               Get in Touch
+            </a>
+            <a
+              href="/resume.pdf"
+              download
+              className="group inline-flex items-center gap-2.5 px-7 py-3.5 border border-teal-500/35 hover:border-teal-400/60 bg-teal-500/10 hover:bg-teal-500/15 text-foreground rounded-xl font-medium text-sm transition-all duration-200 hover:-translate-y-0.5"
+              aria-label="Download resume"
+            >
+              Download Resume
+              <Download
+                size={16}
+                className="group-hover:translate-y-0.5 transition-transform"
+              />
             </a>
           </motion.div>
 
