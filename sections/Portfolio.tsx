@@ -37,7 +37,7 @@ const projects = [
       "DokHUb is a Full Stack Laravel StartUp project designed to streamline doctor appointment scheduling and management. It features a user-friendly interface for patients and doctors, real-time notifications, AI features, and secure data handling.",
     tags: ["LARAVEL", "VUE", "TAILWIND CSS", "INERTIA JS", "POSTGRESQL"],
     github: "https://github.com/mrcoffeex/dokhub",
-    live: "https://dokhub-main-k63oyd.free.laravel.cloud/",
+    live: "https://dokhubph.com/",
     gradient: "from-teal-400/15 to-orange-500/15",
     dotColor: "bg-teal-400",
     image: "/images/projects/dokhub.png",

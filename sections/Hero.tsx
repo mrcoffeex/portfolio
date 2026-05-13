@@ -66,7 +66,7 @@ export default function Hero() {
             </span>
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-border bg-card text-muted-foreground text-sm font-mono">
               <span className="text-green-400">▸</span>
-              AI Automation Specialist
+              AI Automation Engineer
             </span>
           </motion.div>
 
